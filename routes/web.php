@@ -12,3 +12,7 @@ Route::group(function () {
 
     Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+});
