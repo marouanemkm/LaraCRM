@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,7 +23,7 @@ class AuthenticationController extends Controller
 
         if ($validator->fails())
         {
-            return redirect('/home')->withErrors($validator);
+            return redirect('/register')->withErrors($validator);
         }
 
         $user = User::create([
@@ -32,11 +33,41 @@ class AuthenticationController extends Controller
             'role' => 'client',
         ]);
 
+        Auth::login($user);
+
         return redirect('dashbord')->with('You are successfully registered');
     }
 
     public function login(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
+        if ($validator->fails())
+        {
+            return redirect('/register')->withErrors($validator);
+        }
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('dashboard');
+        }
+
+        return back()->withErrors([
+            'credentials' => 'Identifiants incorrect',
+        ]);
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
     }
 
 }
