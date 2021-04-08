@@ -10,7 +10,7 @@
     </div>
     
     <div class="w-50" style="margin:150px auto;">
-        <form>
+        <form method="POST" action="{{route('login')}}">
             <fieldset>
                 <legend class="text-center">Connexion</legend>
                 <div class="form-group">
