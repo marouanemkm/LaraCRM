@@ -11,6 +11,8 @@
     
     <div class="w-50" style="margin:150px auto;">
         <form method="POST" action="{{route('login')}}">
+            @csrf
+            @method('POST')
             <fieldset>
                 <legend class="text-center">Connexion</legend>
                 <div class="form-group">
