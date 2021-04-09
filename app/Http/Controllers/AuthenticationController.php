@@ -39,22 +39,17 @@ class AuthenticationController extends Controller
     }
 
     public function login(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
+        $validate = $request->validate([
+            'email' => 'required|string|email|max:60',
+            'password' => 'required|string|min:4|max:60',
         ]);
-
-        if ($validator->fails())
-        {
-            return redirect('/login')->withErrors($validator);
-        }
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials))
+        {
             $request->session()->regenerate();
-
-            return redirect('dashboard');
+            return redirect('/dashbord');
         }
 
         return back()->withErrors([
@@ -71,6 +66,6 @@ class AuthenticationController extends Controller
     }
 
     public function showLogin() {
-        return view('dashbord');
+        return view('auth.login');
     }
 }
