@@ -46,7 +46,7 @@ class AuthenticationController extends Controller
 
         if ($validator->fails())
         {
-            return redirect('/register')->withErrors($validator);
+            return redirect('/login')->withErrors($validator);
         }
 
         $credentials = $request->only('email', 'password');
@@ -70,4 +70,7 @@ class AuthenticationController extends Controller
         return redirect('/');
     }
 
+    public function showLogin() {
+        return view('dashbord');
+    }
 }
