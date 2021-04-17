@@ -51,7 +51,6 @@ class AuthenticationController extends Controller
             $request->session()->regenerate();
             return redirect('/dashbord');
         }
-
         return back()->withErrors([
             'credentials' => 'Identifiants incorrect',
         ]);

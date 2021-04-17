@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <div>
+    <div class="mt-5">
         <h1 class="text-center"><i class="fas fa-address-book"></i></h1>
         <h1 class="text-center mt-1">LaraCRM</h1>
     </div>

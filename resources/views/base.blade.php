@@ -28,7 +28,9 @@
             </div>
         @endauth
 
-        <div class="content">
+        <div @auth
+            class="content"
+        @endauth >
             @yield('content')
         </div>
 
