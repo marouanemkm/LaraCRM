@@ -7,14 +7,25 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <title>LaraCRM</title>
     </head>
 
     <body>
         @auth
-            @include('incs.navbar')
+            <div class="menu">
+                <nav>
+                    <h2>LaraCRM</h2>
+                    <ul>
+                        <li><a href="{{ route('dashbord') }}">Tableau de Bord</a></li>
+                        <li>Clients</li>
+                        <li>Projets</li>
+                        <li>Calendrier</li>
+                        <li><a href="{{ route('logout')}}">Déconnexion</a></li>
+                    </ul>
+                </nav>
+            </div>
         @endauth
 
         <div class="content">

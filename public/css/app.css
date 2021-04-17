@@ -3,10 +3,10 @@
     height: 100% !important;
     width: 200px !important;
     background: #333 !important;
+    margin-top: 0 !important;
 }
 .menu li{
     list-style: none !important;
-    margin-top: 50px;
     margin-bottom: 50px;
     color: white;
 }
@@ -17,6 +17,7 @@
     text-align: center;
 }
 .content{
-    position: absolute;
-    left: 250px;
+    position: relative;
+    top: 50px;
+    margin-left: 250px;
 }
