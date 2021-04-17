@@ -23,6 +23,15 @@
                     <label for="password">Mot de passe</label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="Saisir votre mot de passe">
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input type="submit" class="btn btn-primary" value="Valider">
                 <p class="mt-2">Pas de compte ? <a href="{{ route('showRegister') }}" class="link-primary">Inscrivez-vous ici.</a></p>
             </fieldset>
