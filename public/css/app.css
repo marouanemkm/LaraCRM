@@ -17,6 +17,6 @@
     text-align: center;
 }
 .content{
-    position: relative;
+    position: absolute;
     left: 250px;
 }
