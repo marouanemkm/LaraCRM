@@ -1,6 +1,5 @@
 @extends('base')
 
 @section('content')
-    <h1>DASHBORD</h1>
-    <h2>Welcome Ningen</h2>
+    <h1>Dashbord</h1>
 @endsection

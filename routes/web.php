@@ -13,10 +13,6 @@ Route::get('/home', function () {
     return view('auth.login');
 });
 
-Route::get('/dashbord', function () {
-    return view('dashbord');
-});
-
 Route::post('/register', [AuthenticationController::class, 'register'])->name('register');
 Route::get('/register', [AuthenticationController::class, 'showRegister'])->name('showRegister');
 
@@ -25,4 +21,7 @@ Route::get('/login', [AuthenticationController::class, 'showLogin'])->name('show
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+    Route::get('/dashbord', function () {
+        return view('dashbord');
+    });
 });
