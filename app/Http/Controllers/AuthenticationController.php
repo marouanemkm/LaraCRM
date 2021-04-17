@@ -18,7 +18,7 @@ class AuthenticationController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         if ($validator->fails())
@@ -59,13 +59,16 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-
+        $request->session()->regenerateToken();
         $request->session()->invalidate();
-
         return redirect('/');
     }
 
     public function showLogin() {
         return view('auth.login');
+    }
+
+    public function showRegister() {
+        return view('auth.register');
     }
 }
