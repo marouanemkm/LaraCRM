@@ -41,6 +41,7 @@
                     </div>
                 @endif
                 <input type="submit" class="btn btn-primary" value="Valider">
+                <p class="mt-2">Retour à la <a href="{{ route('showLogin') }}" class="link-primary">connection ici.</a></p>
             </fieldset>
         </form>
     </div>

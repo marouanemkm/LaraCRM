@@ -20,7 +20,7 @@ Route::post('/login', [AuthenticationController::class, 'login'])->name('login')
 Route::get('/login', [AuthenticationController::class, 'showLogin'])->name('showLogin');
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
     Route::get('/dashbord', function () {
         return view('dashbord');
     })->name('dashbord');
